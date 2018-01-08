@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "coap": "^0.7.2",
+    "coap-shepherd": "^0.2.7"
+  }
+}

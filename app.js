@@ -2,7 +2,7 @@ var coap = require('coap');
 var mysql = require('mysql');
 
 var server = coap.createServer();
-var config = require('../coap/db-config.json');
+var config = require('./db-config.json');
 var pool = mysql.createPool(config)
 
 server.on('request', function(req,res){
@@ -14,7 +14,7 @@ server.on('request', function(req,res){
 	var hum = ser[1];
 	var light = ser[2];
 	var device_id = ser[3];
-	console.log('device id:%s, temperature:%f, humidity:%f, light:%f \n',device_id,temp,hum,light);
+	console.log('device id:%s, temperature:%s, humidity:%s, light:%s \n',device_id,temp,hum,light);
 
 	pool.getConnection(function(err, connection){
 		connection.query('insert into sensor_history set device_id=?, temp=?, hum = ?,light=?,time=NOW()',
